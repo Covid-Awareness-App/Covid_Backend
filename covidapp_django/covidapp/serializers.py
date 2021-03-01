@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import State, Location
+from .models import State, Location, Feedback
 
 class StateSerializer(serializers.HyperlinkedModelSerializer):
     locations = serializers.HyperlinkedRelatedField(
@@ -22,3 +22,15 @@ class LocationSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Location
         fields = ('id', 'name', 'business_name', 'business_img', 'address', 'hours', 'contact_number', 'offers', 'states',)
+
+
+class FeedbackSerializer(serializers.HyperlinkedModelSerializer):
+    locations = serializers.HyperlinkedRelatedField(
+        view_name='location_detail',
+        many=False,
+        read_only=True
+    )
+
+    class Meta:
+        model = Feedback
+        fields = ('id', 'business_name', 'comment', 'locations',)

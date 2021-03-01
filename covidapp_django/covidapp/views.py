@@ -1,7 +1,7 @@
 # from django.shortcuts import render
 from rest_framework import generics
-from .serializers import StateSerializer, LocationSerializer
-from .models import State, Location
+from .serializers import StateSerializer, LocationSerializer, FeedbackSerializer
+from .models import State, Location, Feedback
 
 # Create your views here.
 class StateList(generics.ListCreateAPIView):
@@ -20,3 +20,12 @@ class LocationList(generics.ListCreateAPIView):
 class LocationDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Location.objects.all()
     serializer_class = LocationSerializer
+
+# Create views for Comments
+class FeedbackList(generics.ListCreateAPIView):
+    queryset = Feedback.objects.all()
+    serializer_class = FeedbackSerializer
+
+class FeedbackDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Feedback.objects.all()
+    serializer_class = FeedbackSerializer
