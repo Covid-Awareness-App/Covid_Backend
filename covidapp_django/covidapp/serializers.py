@@ -19,18 +19,24 @@ class LocationSerializer(serializers.HyperlinkedModelSerializer):
         read_only=True
     )
 
+    feedbacks = serializers.HyperlinkedRelatedField(
+        view_name='feedback_detail',
+        many=True,
+        read_only=True
+    )
+
     class Meta:
         model = Location
-        fields = ('id', 'name', 'business_name', 'business_img', 'address', 'hours', 'contact_number', 'offers', 'states',)
-
+        fields = ('id', 'name', 'business_name', 'business_img', 'address', 'hours', 'contact_number', 'offers', 'states', 'feedbacks',)
 
 class FeedbackSerializer(serializers.HyperlinkedModelSerializer):
     locations = serializers.HyperlinkedRelatedField(
         view_name='location_detail',
-        many=False,
+        many=True,
         read_only=True
     )
 
     class Meta:
         model = Feedback
         fields = ('id', 'business_name', 'comment', 'locations',)
+
