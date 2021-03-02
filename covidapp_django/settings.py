@@ -91,15 +91,15 @@ WSGI_APPLICATION = 'covidapp_django.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    # 'default': dj_database_url.config(conn_max_age=600)
+    'default': dj_database_url.config(conn_max_age=600)
 
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'covidapp',
-        'USER': 'covidappuser',
-        'PASSWORD': 'covidapp',
-        'HOST': 'localhost'
-    }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'covidapp',
+    #     'USER': 'covidappuser',
+    #     'PASSWORD': 'covidapp',
+    #     'HOST': 'localhost'
+    # }
 
     # 'default': {
     #     'ENGINE': 'django.db.backends.sqlite3',
