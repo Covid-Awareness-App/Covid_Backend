@@ -21,3 +21,10 @@ class Location(models.Model):
 
     def __str__(self):
         return self.business_name
+
+class Feedback(models.Model):
+    business_name = models.ForeignKey(Location, on_delete=models.CASCADE, related_name='feedbacks', null=True)
+    comment = models.TextField()
+
+    def __str__(self):
+        return self.comment
